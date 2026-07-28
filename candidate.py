@@ -41,6 +41,10 @@ class CandidateExpression:
     # ---------- Optional notes ----------
     notes: str = ""
 
+    # ---------- Added for better compatibility with compile_candidate in stage 2 ----------
+    tree: Optional[Node] = None
+    variables: list = field(default_factory=list)
+
     def evaluate(self, X):
         """
         Evaluate the symbolic expression.
