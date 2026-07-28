@@ -42,7 +42,7 @@ class CandidateExpression:
     notes: str = ""
 
     # ---------- Added for better compatibility with compile_candidate in stage 2 ----------
-    tree: Optional[Node] = None
+    tree: Optional[list[int]] = None
     variables: list = field(default_factory=list)
 
     def evaluate(self, X):
