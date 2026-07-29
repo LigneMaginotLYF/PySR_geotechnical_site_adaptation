@@ -71,7 +71,8 @@ class CandidateScreening:
         self,
         candidates,
         Y_old,
-        Y_new
+        Y_new,
+        adapt_idx,
     ):
 
         """
@@ -87,18 +88,16 @@ class CandidateScreening:
 
             )
 
-            candidate.rmse_new = rmse(
+            pred_adapt = np.asarray(candidate.prediction_new)[adapt_idx]
+            y_adapt = np.asarray(Y_new)[adapt_idx]
 
-                Y_new,
-                candidate.prediction_new
-
-            )
+            candidate.rmse_adapt = rmse(y_adapt, pred_adapt)
 
             candidate.transfer_gap = abs(
 
                 candidate.rmse_old
                 -
-                candidate.rmse_new
+                candidate.rmse_adapt
 
             )
 
@@ -395,6 +394,8 @@ class CandidateScreening:
 
         Y_new,
 
+        adapt_idx,
+
         pareto_fronts=3,
 
         target_candidates=5
@@ -411,7 +412,9 @@ class CandidateScreening:
 
             Y_old,
 
-            Y_new
+            Y_new,
+
+            adapt_idx
 
         )
 
@@ -540,6 +543,8 @@ if __name__ == "__main__":
         Y_old,
 
         Y_new,
+
+        adapt_idx,
 
         pareto_fronts=3,
 
