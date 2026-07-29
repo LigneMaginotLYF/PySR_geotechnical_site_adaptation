@@ -123,7 +123,7 @@ class BayesianPredictor:
         return (
 
             mean,
-            variance,
+            std,
             lower,
             upper
 
