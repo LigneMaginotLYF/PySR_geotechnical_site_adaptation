@@ -199,5 +199,3 @@ class BayesianLinearRegression:
         self.posterior_cov = Sigma
       
         return Mu, Sigma
-
-        return Mu, Sigma
