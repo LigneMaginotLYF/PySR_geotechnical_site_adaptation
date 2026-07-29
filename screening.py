@@ -29,7 +29,7 @@ Outputs
 Selected candidate indices
 Selected CandidateExpression objects
 
-Author:
+Adapted to the modified stages 5 and 6
 """
 
 import numpy as np
