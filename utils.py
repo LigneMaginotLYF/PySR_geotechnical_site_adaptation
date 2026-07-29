@@ -144,8 +144,8 @@ def save_selected_candidates(
             "RMSE_old":
                 c.rmse_old,
 
-            "RMSE_new":
-                c.rmse_new,
+            "RMSE_adapt":
+                getattr(c, "rmse_adapt", np.nan),
 
             "TransferGap":
                 c.transfer_gap
