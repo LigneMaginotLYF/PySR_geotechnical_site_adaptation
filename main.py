@@ -3,7 +3,6 @@
 # ============================================================
 
 import logging
-
 import config
 
 from utils import (
@@ -13,15 +12,15 @@ from utils import (
     save_selected_candidates,
     save_posterior,
     save_metrics,
-    initialise_logging
+    initialise_logging,
 )
 
-from stage1_extract import CandidateExtractor
-from stage2_parser import ExpressionParser
-from stage3_dictionary import DictionaryBuilder
-from stage4_screening import CandidateScreening
-from stage5_bayesian import BayesianLinearRegression
-from stage6_prediction import BayesianPredictor
+from extract_pysr import PySRCandidateExtractor
+from parser import ExpressionParser
+from build_dictionary import DictionaryBuilder
+from screening import CandidateScreening
+from bayesian_regression import BayesianLinearRegression
+from prediction import BayesianPredictor
 
 
 # ============================================================
@@ -69,9 +68,9 @@ def main():
 
     logging.info("Stage 1")
 
-    extractor = CandidateExtractor()
+    extractor = PySRCandidateExtractor()
 
-    candidates = extractor.extract(
+    candidates = extractor.search(
 
         config.PYSR_FOLDER
 
@@ -118,6 +117,8 @@ def main():
         Y_old,
 
         Y_new,
+
+        adapt_idx=adapt_idx,
 
         pareto_fronts=config.N_PARETO_FRONTS,
 
