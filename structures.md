@@ -1,30 +1,29 @@
-SymbolicTransferLearning/
+config.py
 │
-├── config.py
-├── main.py
+main.py
 │
-├── candidates/
-│   ├── extract_pysr.py
-│   ├── parser.py
-│   └── candidate.py
+├── stage1_extract.py
+├── stage2_parser.py
+├── stage3_dictionary.py
+├── stage4_screening.py
+├── stage5_bayes.py
+├── stage6_prediction.py
 │
-├── dictionary/
-│   ├── build_dictionary.py
-│   ├── redundancy.py
-│   └── screening.py
+├── candidate.py
+├── utils.py
 │
-├── bayesian/
-│   ├── likelihood.py
-│   ├── priors.py
-│   ├── inference.py
-│   └── prediction.py
-│
-├── utils/
-│   ├── safe_math.py
-│   ├── metrics.py
-│   └── io.py
-│
-└── examples/
-    ├── old_site.csv
-    ├── new_site.csv
-    └── run_example.py
+└── output/
+
+      metrics.json
+
+      prediction.csv
+
+      selected_candidates.csv
+
+      posterior_mean.csv
+
+      posterior_cov.npy
+
+      config.json
+
+      experiment.log
