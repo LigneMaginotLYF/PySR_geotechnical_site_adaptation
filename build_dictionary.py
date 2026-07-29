@@ -25,7 +25,7 @@ Phi_old
 Phi_new
 candidate_ids
 
-Author:
+Note that the dictionary needs to be evaluated only once on the whole of new site data.
 """
 
 import numpy as np
