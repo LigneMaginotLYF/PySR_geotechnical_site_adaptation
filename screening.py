@@ -405,18 +405,22 @@ class CandidateScreening:
         """
         Complete screening.
         """
+        # Remove candidates with non-finite cached predictions
+        valid = []
 
-        self.evaluate_candidates(
+        for i, c in enumerate(candidates):
+            po = np.asarray(c.prediction_old)
+            pn = np.asarray(c.prediction_new)
+            if np.all(np.isfinite(po)) and np.all(np.isfinite(pn)):
+                valid.append(i)
 
-            candidates,
+        if len(valid) == 0:
+            raise RuntimeError("All candidates invalid after finite-value check.")
 
-            Y_old,
+        candidates = [candidates[i] for i in valid]
+        Phi_new = Phi_new[:, valid]
 
-            Y_new,
-
-            adapt_idx
-
-        )
+        self.evaluate_candidates(candidates, Y_old, Y_new, adapt_idx)
 
         fronts = self.pareto_fronts(
             candidates

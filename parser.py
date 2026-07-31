@@ -299,7 +299,9 @@ class TreeCompiler:
     def evaluate(self, node, X):
 
         if isinstance(node, ConstantNode):
-            return node.value
+            #return node.value - Should be fixed!!
+            # Broadcast scalar constant over all samples
+            return np.full(X.shape[0], node.value, dtype=float)
 
         elif isinstance(node, VariableNode):
             return X[:, node.index]

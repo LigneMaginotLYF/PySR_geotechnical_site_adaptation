@@ -169,8 +169,10 @@ class BayesianLinearRegression:
 
         )
 
-        Sigma = np.linalg.inv(
-            Sigma_inv
+        I = np.eye(K)
+
+        Sigma = np.linalg.solve(
+            Sigma_inv, I
         )
 
         Mu = (

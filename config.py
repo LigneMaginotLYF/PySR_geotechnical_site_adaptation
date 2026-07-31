@@ -14,11 +14,11 @@ PROJECT_ROOT = Path(__file__).resolve().parent
 # Input
 # ------------------------------------------------------------
 
-PYSR_FOLDER = PROJECT_ROOT / "pysr_results"
+PYSR_FOLDER = PROJECT_ROOT / "datasets" / "tunnel heave case" / "pysr_results"
 
-OLD_DATASET = PROJECT_ROOT / "data" / "old_site.csv"
+OLD_DATASET = PROJECT_ROOT / "datasets" / "tunnel heave case" / "data" / "old_dimless_5.csv"
 
-NEW_DATASET = PROJECT_ROOT / "data" / "new_site.csv"
+NEW_DATASET = PROJECT_ROOT / "datasets" / "tunnel heave case" / "data" / "new_dimless_5.csv"
 
 TARGET_COLUMN = -1
 
@@ -26,12 +26,12 @@ TARGET_COLUMN = -1
 # Adaptation
 # ------------------------------------------------------------
 
-ADAPT_MODE = "first"
+ADAPT_MODE = "random"
 # first | random | manual
 
-ADAPT_SIZE = 5
+ADAPT_SIZE = 20
 
-MANUAL_INDICES = []
+MANUAL_INDICES = [0, 14, 33, 49]  # 1-14, 1-19, 1-16, 1-14 -> 1,15,34,50
 
 RANDOM_SEED = 42
 
@@ -39,9 +39,9 @@ RANDOM_SEED = 42
 # Screening
 # ------------------------------------------------------------
 
-N_PARETO_FRONTS = 3
+N_PARETO_FRONTS = 2
 
-TARGET_CANDIDATES = 5
+TARGET_CANDIDATES = 20
 
 # ------------------------------------------------------------
 # Bayesian
@@ -49,7 +49,7 @@ TARGET_CANDIDATES = 5
 
 ALPHA = 1.0
 
-BETA = 1.0
+BETA = 100
 
 # ------------------------------------------------------------
 # Output

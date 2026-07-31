@@ -91,6 +91,7 @@ class DictionaryBuilder:
                 pred_old,
                 dtype=float
             ).reshape(-1)
+            pred_old = np.nan_to_num(pred_old, nan=0.0, posinf=1e12, neginf=1e-12)
 
             # -------------------------
             # New Site
@@ -102,6 +103,7 @@ class DictionaryBuilder:
                 pred_new,
                 dtype=float
             ).reshape(-1)
+            pred_new = np.nan_to_num(pred_new, nan=0.0, posinf=1e12, neginf=1e-12)
 
             # -------------------------
             # Dimension checking
